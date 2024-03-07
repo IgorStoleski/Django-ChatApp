@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block content %} 
+{% if request.user.is_authenticated%} {% for message in messages %}
+<div>
+  <span class="color">[{{ message.created_at }}]</span> {{
+  message.author.first_name }}: {{ message.text }}
+</div>
+{% endfor %}
+
+<script>
+  async function sendMessage() {
+    let fd = new FormData();
+    let token = '{{ csrf_token }}';
+    fd.append("textmessage", messageField.value);
+    fd.append("cerfmiddlewaretoken", token);
+    try {
+      await fetch('/chat/', {
+        method: 'POST',
+        body: fd,
+      });
+      console.log('Message sent');
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+</script>
+
+<form onsubmit="sendMessage(); return false;" method="post">
+  {% csrf_token %}
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input
+      class="mdl-textfield__input"
+      name="textmessage"
+      type="text"
+      id="messageField"
+    />
+    <label class="mdl-textfield__label" for="messageField">Text...</label>
+  </div>
+  <button
+    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+  >
+    Send
+  </button>
+</form>
+
+{% else %}
+
+<h1>Nicht eingeloggt</h1>
+<p>
+  Du bist aktuell nicht eingelogt. Bitte logge dich ein. <br />
+  bitte klicke <a href="/login/">hier</a>
+</p>
+{% endif %} 
+{% endblock %}
