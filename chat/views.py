@@ -10,6 +10,11 @@ from django.contrib.auth import logout
 
 @login_required
 def index(request):
+    """
+    This view displays the chatroom.
+    Users must be logged in to access this view.
+    Users can input and send messages, and the sent messages will be displayed in the chatroom.
+    """
     if request.method == "POST":
         print("received data " + request.POST["textmessage"])
         myChat = Chat.objects.get(id=1)
@@ -26,6 +31,10 @@ def index(request):
 
 
 def login_view(request):
+    """
+    This view allows users to log in.
+    Upon successful login, they will be redirected to the chat page.
+    """
     redirect = request.GET.get("next", "/chat/")
     if request.method == "POST":
         user = authenticate(
@@ -43,10 +52,19 @@ def login_view(request):
     return render(request, "auth/login.html", {"redirect": redirect})
 
 def logout_view(request):
+    """
+    This view allows users to log out.
+    After logging out, they will be redirected to the login page.
+    """
     logout(request)
     return HttpResponseRedirect("/login/") 
 
 def register_view(request):
+    """
+    This view allows users to register.
+    They can input a username and password.
+    Upon successful registration, they will be redirected to the specified redirection page.
+    """
     redirect = request.GET.get("next")
     password = request.POST.get("password")
     checkPassword = request.POST.get("checkPassword")
