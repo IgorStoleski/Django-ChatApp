@@ -67,6 +67,10 @@
   max-width: 400px;
 }
 
+.author {
+  color: crimson;
+}
+
 #messageContainer{
   gap: 5px;
   display: flex;
@@ -91,10 +95,6 @@
 .last-message {
   margin-bottom: 20px;
 }
-
-/* .right .message-container {
-  align-items: flex-end;
-} */
 
 .message-left {
   align-items: flex-start;

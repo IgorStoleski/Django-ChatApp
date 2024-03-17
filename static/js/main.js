@@ -60,5 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 let messageContainers = document.querySelectorAll('#messageContainer .message-container');
-let lastMessageContainer = messageContainers[messageContainers.length - 1];
-lastMessageContainer.classList.add('last-message');
+if (messageContainers.length > 0) {
+    let lastMessageContainer = messageContainers[messageContainers.length - 1];
+    if (lastMessageContainer) {
+        lastMessageContainer.classList.add('last-message');
+    }
+}

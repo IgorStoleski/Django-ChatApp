@@ -8,7 +8,7 @@
   {% for message in messages %}
   <div id="messageContainer" class="{% if message.author == request.user %}message-right{% else %}message-left{% endif %}">
     <div class="message-container">
-      <span class="author">{{ message.author.first_name }}</span>
+      <span class="author"><b>{{ message.author.username }}</b></span>
       <span class="author-text">{{ message.text }}</span>
       <div class="text-right"><span class="color">{{ message.created_at }}</span> </div>
     </div>
