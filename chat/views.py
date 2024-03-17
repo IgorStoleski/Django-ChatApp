@@ -8,6 +8,12 @@ from django.core import serializers
 from django.contrib.auth import logout
 
 
+def welcome_view(request):
+    """
+    This view displays the main page.
+    """
+    return render(request, "main/welcome.html")
+
 @login_required
 def index(request):
     """

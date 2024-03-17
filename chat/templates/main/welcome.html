@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Welcome to Simple Chat App</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      Please login to use the chatroom or register if you don't have an account.
+    </div>
+    <div class="mdl-card__actions mdl-card--border spaceb">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/register/">
+        Registry
+      </a>
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/login/">
+        Login
+      </a>
+    </div>
+</div>
+
+{% endblock %}
