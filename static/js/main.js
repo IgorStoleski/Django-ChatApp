@@ -67,16 +67,6 @@ if (messageContainers.length > 0) {
     }
 }
 
-/* document.getElementById('messageField').addEventListener('input', function() {
-    const messageField = document.getElementById('messageField');
-    const sendButton = document.getElementById('sendButton');
-    if(messageField.value.trim() !== '') {
-        sendButton.disabled = false;
-    } else {
-        sendButton.disabled = true;
-    }
-}); */
-
 const messageField = document.getElementById('messageField');
 
 if (messageField) {
