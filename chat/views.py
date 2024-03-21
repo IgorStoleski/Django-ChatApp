@@ -71,7 +71,7 @@ def register_view(request):
     They can input a username and password.
     Upon successful registration, they will be redirected to the specified redirection page.
     """
-    redirect = request.GET.get("next")
+    redirect = request.GET.get("next", "/chat/")
     password = request.POST.get("password")
     checkPassword = request.POST.get("checkPassword")
     if request.method == "POST":
@@ -81,6 +81,7 @@ def register_view(request):
         )
         if password == checkPassword:
             user.save()
+            login(request, user)
             return HttpResponseRedirect(request.POST.get("redirect"))
         else:
             return render(request, "auth/login.html", {"redirect": redirect})
